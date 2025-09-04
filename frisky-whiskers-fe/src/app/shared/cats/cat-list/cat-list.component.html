@@ -1,0 +1,19 @@
+@defer(on immediate) {
+    <div class="cat-container">
+      @for (cat of cats; track cat.id) {
+      <div
+        class="cat-preview-container"
+      >
+        <div class="cat-preview-content">
+          <h2>{{ <cat.name }}</h2>
+          
+        </div>
+        <img
+          src=""
+          alt="cat image"
+          class="cat-image"
+        />
+      </div>
+      }
+    </div>
+    }
