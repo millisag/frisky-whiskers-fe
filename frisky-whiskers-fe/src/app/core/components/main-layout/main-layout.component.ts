@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   standalone: true,
@@ -9,5 +10,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './main-layout.component.scss'
 })
 export class MainLayoutComponent {
+  constructor(public authService: AuthenticationService) {}
 
+	logout() {
+		this.authService.logout();
+	}
 }

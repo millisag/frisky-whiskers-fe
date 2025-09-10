@@ -4,6 +4,11 @@
       <nav>
         <img src="/assets/images/logo.png" alt="logo" width="100px" />
         <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        @if (authService.isLoggedIn()){
+          <a (click)="logout()">Logout</a>
+          }@else {
+          <a routerLink="/login">Login</a>
+          }
       </nav>
     </div>
     <div class="content">
