@@ -11,6 +11,10 @@ export class AuthenticationService {
 	private readonly tokenSubject = new BehaviorSubject<string | null>(null);
 
 	constructor(private http: HttpClient, private router: Router) {}
+  
+  signup(data: any) {
+    return this.http.post(`${environment.apiUrl}/users`, data);
+  }
 
 	login(username: string, password: string): Observable<{ token: string }> {
     console.log('API URL:', `${environment.apiUrl}/login`);
