@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 class="create-cat-name">Add a cat!</h1>
+    <form [formGroup]="catForm" (ngSubmit)="onSubmit()" class="form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" formControlName="name" id="name" required />
+      </div>
+      <div class="form-group">
+        <label for="breed">Breed:</label>
+        <textarea
+          formControlName="breed"
+          id="breed"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="color">Color:</label>
+        <textarea
+          formControlName="color"
+          id="color"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <textarea
+          formControlName="age"
+          id="age"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="weight">Weight:</label>
+        <textarea
+          formControlName="weight"
+          id="weight"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" [disabled]="!catForm.valid">Submit</button>
+    </form>
+  </div>

@@ -14,4 +14,12 @@ export const routes: Routes = [
         loadComponent: () => import('./features/auth/login/login.component').then((c) => c.LoginComponent),
         canActivate: [noAuthGuard],
     },
+    {
+        path: 'cats/new',
+        loadComponent: () =>
+          import('./features/cats/cats-new/cats-new.component').then(
+            (c) => c.CatsNewComponent
+          ),
+        canActivate: [authGuard],
+      },
 ];

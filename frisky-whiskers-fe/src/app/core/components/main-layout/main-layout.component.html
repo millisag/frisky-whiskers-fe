@@ -2,9 +2,15 @@
     <div class="sidebar">
       <!-- Sidebar content -->
       <nav>
-        <img src="/assets/images/logo.png" alt="logo" width="100px" />
+        <!-- <img src="/assets/images/logo.png" alt="logo" width="100px" /> -->
         <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Home</a>
         @if (authService.isLoggedIn()){
+            <a
+        routerLink="/cats/new"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Add Cat</a
+      >
           <a (click)="logout()">Logout</a>
           }@else {
           <a routerLink="/login">Login</a>
