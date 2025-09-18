@@ -39,10 +39,10 @@ export class CatsNewComponent {
         ownerId: 0
       };
 
-      this.catService.createCat(catData, 0).subscribe({
+      this.catService.createCat(catData).subscribe({
         next: (cat: Cat) => {
           console.log('Cat created', cat);
-          this.router.navigate(['/cats']);
+          this.router.navigate(['/']);
         },
         error: (error: any) => {
           console.error('Error creating cat', error);

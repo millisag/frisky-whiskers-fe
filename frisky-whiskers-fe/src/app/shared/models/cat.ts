@@ -1,9 +1,11 @@
-export class Cat {
-    id!: number;
-    name: string = '';
-    age: number = 0;
-    breed: string = '';
-    color: string = '';
-    weight: number = 0;
-    ownerId!: number;
+
+
+export interface Cat {
+    id: number;
+    name: string;
+    age: number;
+    breed: string
+    color: string
+    weight: number
+    ownerId: number;
 }
