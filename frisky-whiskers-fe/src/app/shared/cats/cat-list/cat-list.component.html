@@ -6,7 +6,11 @@
       >
         <div class="cat-preview-content">
           <h2>{{ cat.name }}</h2>
-          
+          <!-- Actions -->
+          <div class="cat-actions">
+            <button (click)="onEdit(cat)">Edit</button>
+            <button (click)="onDelete(cat.id)">Delete</button>
+          </div>
         </div>
         <!-- <img
           src=""

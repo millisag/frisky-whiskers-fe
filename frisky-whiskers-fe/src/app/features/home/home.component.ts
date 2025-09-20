@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { CatService } from '../../core/services/cat.service';
 import { Cat } from '../../shared/models/cat';
 import { CatListComponent } from '../../shared/cats/cat-list/cat-list.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, CatListComponent],
+  imports: [CommonModule, CatListComponent, FormsModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -39,6 +40,41 @@ export class HomeComponent {
       }
     });
   }
+  handleDelete(id: number) {
+    this.catService.deleteCat(id).subscribe({
+      next: () => {
+        // update signal by filtering out deleted cat
+        this.cats.update((prev) => prev.filter((c) => c.id !== id));
+      },
+      error: (err) => {
+        console.error('Failed to delete cat', err);
+      }
+    });
+  }
+
+  editingCat: Cat | null = null;
+
+handleEdit(cat: Cat) {
+  this.editingCat = { ...cat }; // clone so we don’t edit directly
+}
+
+closeModal() {
+  this.editingCat = null;
+}
+
+saveEdit() {
+  if (!this.editingCat) return;
+
+  this.catService.updateCat(this.editingCat.id, this.editingCat).subscribe({
+    next: (updated) => {
+      this.cats.update((prev) =>
+        prev.map((c) => (c.id === updated.id ? updated : c))
+      );
+      this.closeModal();
+    },
+    error: (err) => console.error('Failed to update cat', err),
+  });
+}
 }
 
 

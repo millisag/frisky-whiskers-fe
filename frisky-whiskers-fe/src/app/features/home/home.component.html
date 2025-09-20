@@ -1,1 +1,41 @@
-<app-cat-list [cats]="displayCats" />
+<app-cat-list
+  [cats]="cats()"
+  (editCat)="handleEdit($event)"
+  (deleteCat)="handleDelete($event)"
+></app-cat-list>
+
+<!-- Modal -->
+@if (editingCat) {
+  <div class="modal-backdrop">
+    <div class="modal">
+      <h2>Edit Cat</h2>
+
+      <label>
+        Name:
+        <input [(ngModel)]="editingCat.name" />
+      </label>
+      <label>
+        Breed:
+        <input type="text" [(ngModel)]="editingCat.breed" />
+      </label>
+      <label>
+        Color:
+        <input type="text" [(ngModel)]="editingCat.color" />
+      </label>
+      <label>
+        Age:
+        <input type="number" [(ngModel)]="editingCat.age" />
+      </label>
+      <label>
+        Weight:
+        <input type="number" [(ngModel)]="editingCat.weight" />
+      </label>
+      
+
+      <div class="modal-actions">
+        <button (click)="saveEdit()">Save</button>
+        <button (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+}

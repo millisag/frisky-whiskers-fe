@@ -19,5 +19,14 @@ export class CatService {
   createCat(cat: Omit<Cat, 'id' | 'ownerId'>): Observable<Cat> {
     return this.http.post<Cat>(`${environment.apiUrl}/cats`, { cat });
   }
+  // Update an existing cat
+  updateCat(id: number, cat: Partial<Cat>): Observable<Cat> {
+    return this.http.put<Cat>(`${environment.apiUrl}/cats/${id}`, { cat });
+  }
+
+  // Delete a cat
+  deleteCat(id: number): Observable<void> {
+    return this.http.delete<void>(`${environment.apiUrl}/cats/${id}`);
+  }
 }
 
