@@ -12,6 +12,11 @@ export class CatListComponent {
   @Input() cats: any[] = [];
   @Output() editCat = new EventEmitter<Cat>();
   @Output() deleteCat = new EventEmitter<number>();
+  @Output() trackFitness = new EventEmitter<Cat>();
+
+onTrackFitness(cat: Cat) {
+  this.trackFitness.emit(cat);
+}
 
   onEdit(cat: Cat) {
     this.editCat.emit(cat);

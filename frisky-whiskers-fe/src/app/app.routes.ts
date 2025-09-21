@@ -30,4 +30,12 @@ export const routes: Routes = [
           ),
         canActivate: [authGuard],
       },
+      {
+        path: 'cats/:id/fitness', 
+        loadComponent: () =>
+          import('./features/cats/cat-fitness/cat-fitness.component').then(
+            (c) => c.CatFitnessComponent
+          ),
+        canActivate: [authGuard],
+      },
 ];

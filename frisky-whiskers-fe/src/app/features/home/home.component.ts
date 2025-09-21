@@ -4,6 +4,7 @@ import { CatService } from '../../core/services/cat.service';
 import { Cat } from '../../shared/models/cat';
 import { CatListComponent } from '../../shared/cats/cat-list/cat-list.component';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,9 +19,13 @@ export class HomeComponent {
   loading = signal(true);
   error = signal<string | null>(null);
   displayCats: Cat[] = [];
+  
 
-  constructor(private catService: CatService) {
+  constructor(private catService: CatService, private router: Router) {
     this.loadCats();
+  }
+  handleTrackFitness(cat: Cat) {
+    this.router.navigate(['/cats', cat.id, 'fitness']);
   }
 
   loadCats() {

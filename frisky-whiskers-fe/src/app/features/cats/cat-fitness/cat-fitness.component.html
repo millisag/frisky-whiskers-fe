@@ -1,0 +1,33 @@
+<h1>Fitness Records <!-- for {{ catName }} --> </h1>
+
+<h2>Food Entries</h2>
+<ul>
+  @for (food of foodEntries(); track food.id) {
+    <li>
+      {{ food.name }} - {{ food.calories }} calories
+      <button (click)="deleteFood(food.id)">Delete</button>
+    </li>
+  }
+</ul>
+
+<input [(ngModel)]="newFood.name" placeholder="Food" />
+<input type="number" [(ngModel)]="newFood.calories" placeholder="Calories" />
+<button (click)="addFoodEntry()">Add Food</button>
+
+<hr />
+
+<h2>Activity Entries</h2>
+<ul>
+  @for (act of activityEntries(); track act.id) {
+    <li>
+      {{ act.activity_type }} - {{ act.duration }} minutes
+      <button (click)="deleteActivity(act.id)">Delete</button>
+    </li>
+  }
+</ul>
+
+<input [(ngModel)]="newActivity.activity_type" placeholder="Activity" />
+<input [(ngModel)]="newActivity.duration" placeholder="Duration (e.g., 15 min)" />
+<button (click)="addActivityEntry()">Add Activity</button>
+
+
