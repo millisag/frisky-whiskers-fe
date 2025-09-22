@@ -6,6 +6,10 @@
       >
         <div class="cat-preview-content">
           <h2>{{ cat.name }}</h2>
+          <p>Age: {{ cat.age }} years</p>
+      <p>Weight: {{ cat.weight }} lbs</p>
+      <p>Breed: {{ cat.breed }}</p>
+      <p>Color: {{ cat.color }}</p>
           <!-- Actions -->
           <div class="cat-actions">
             <button (click)="onEdit(cat)">Edit</button>
